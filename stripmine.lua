@@ -28,12 +28,13 @@ function fuel()
         turtle.refuel(1)
     end
 end
-fuel()
  
 -- main
 function main()
-  checkInv()
-  dig()
+ fuel()
+ checkInv()
+ dig()
+ deposit()
 end
 
 -- check and deal with full inventory
@@ -48,11 +49,11 @@ function checkInv()
       return
     end
   end
-  deposit()
+  deposit(1)
 end
 
 
-function deposit()
+function deposit(t)
  invdx = dx * -1
  invdy = dy * -1
  movey(invdy)
@@ -65,10 +66,12 @@ function deposit()
  end
  turtle.turnRight()
  turtle.turnRight()
- invdy = invdy * -1
- invdx = invdx * -1
- movex(invdx)
- movey(invdy)
+ if t == 1 then
+  invdy = invdy * -1
+  invdx = invdx * -1
+  movex(invdx)
+  movey(invdy)
+ end
 end
  
 -- move maintains directionality so it is only to be used for moving on its own, not in between mining. x,y is relative to turtle
