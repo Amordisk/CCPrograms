@@ -33,7 +33,7 @@ end
 function main()
  fuel()
  checkInv()
- dig()
+ dig(depth, height)
  deposit()
 end
 
@@ -76,7 +76,6 @@ end
  
 -- move maintains directionality so it is only to be used for moving on its own, not in between mining. x,y is relative to turtle
 function movey(y)
- 
  if y > 0 then
   turtle.turnRight()
   for i=1,y do
@@ -95,7 +94,6 @@ function movey(y)
 end
 
 function movex(x)
-
  if x > 0 then
   for i=1,x do
    turtle.forward()
@@ -109,7 +107,16 @@ function movex(x)
  end
 end
  
-function dig()
+function dig(d,h)
+ if h == 3 then
+  for i=1,d do
+   turtle.dig()
+   movex(1)
+   turtle.digUp()
+   turtle.digDown()
+  end
+ end
+ 
  
 end
 
