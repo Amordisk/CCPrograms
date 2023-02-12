@@ -107,9 +107,11 @@ function dig(d,h)
    turtle.digUp()
    turtle.digDown()
   end
- end
- 
- 
+ --end
+end
+
+function senseOre(block)
+ return block.name:find('ore')
 end
 
 -- main
