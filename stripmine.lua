@@ -5,6 +5,7 @@ dx = 0
 dy = 0
 width = 0
 branchSpace = 0
+directionality = 1 -- 1 = up/true to axis, 2 = right, 0 = left
  
 -- input
 print("height")
@@ -48,10 +49,45 @@ function checkInv()
       return
     end
   end
-  -- right here need to add something that returns you to start position and puts stuff in chest
-  startLoc()
+  deposit()
 end
 
--- need to make functions for dig, move and startLoc(move back to start and deposit in chest)
 
-
+function deposit()
+ -- deposit function for move to start chest, depositing items, and optionally moving back
+end
+ 
+-- move maintains directionality so it is only to be used for moving on its own, not in between mining. x,y is relative to turtle
+function move(x,y)
+ if x > 0 then
+  for i=1,x do
+   turtle.forward()
+   dx = dx + 1
+  end
+ elseif x < 0 then
+  for i=x,-1 do
+   turtle.back()
+   dx = dx - 1
+  end
+ end
+ 
+ if y > 0 then
+  turtle.turnRight()
+  for i=1,y do
+   turtle.forward()
+   dy = dy + 1
+  end
+  turtle.turnLeft()
+ elseif y < 0 then
+  turtle.turnLeft()
+  for i=y,-1 do
+   turtle.forward()
+   dy = dy - 1
+  end
+  turtle.turnRight()
+ end
+end
+ 
+function dig()
+ 
+end
