@@ -100,7 +100,7 @@ function movex(x)
 end
  
 function dig(d,h)
- if h == 3 then
+ --if h == 3 then   stops dig from working for some reason
   for i=1,d do
    turtle.dig()
    movex(1)
