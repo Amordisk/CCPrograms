@@ -1,0 +1,4 @@
+stripmine
+1. fix the height selector
+2. add branch mining
+3. add vein mining using tables and including the inverse of the turtles movement for backwards traversing
