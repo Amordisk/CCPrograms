@@ -44,7 +44,7 @@ function checkInv()
     table.insert(inventory,turtle.getItemCount(i))
   end
   for i=1,#inventory do
-    if inventory[i] = 0 then
+    if inventory[i] == 0 then
       return
     end
   end
