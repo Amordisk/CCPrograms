@@ -102,10 +102,10 @@ end
 function dig(d,h)
  --if h == 3 then   stops dig from working for some reason
   for i=1,d do
-   --vein sense here
+   veinSense()
    turtle.dig()
    movex(1)
-   --vein sense here
+   veinSense()
    turtle.digUp()
    turtle.digDown()
   end
