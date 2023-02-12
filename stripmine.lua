@@ -5,7 +5,7 @@ dx = 0
 dy = 0
 width = 0
 branchSpace = 0
-directionality = 1 -- 1 = up/true to axis, 2 = right, 0 = left
+directionality = 1 -- 1 = up/true to axis, 2 = right, 0 = left, 3 = backwards
  
 -- input
 print("height")
@@ -55,11 +55,24 @@ end
 function deposit()
  invdx = dx * -1
  invdy = dy * -1
- move(invdx,invdy)
+ movey(invdy)
+ movex(invdx)
+ turtle.turnLeft()
+ turtle.turnLeft()
+ for i=1,15 do
+  turtle.select(i)
+  turtle.drop()
+ end
+ turtle.turnRight()
+ turtle.turnRight()
+ invdy = invdy * -1
+ invdx = invdx * -1
+ movex(invdx)
+ movey(invdy)
 end
  
 -- move maintains directionality so it is only to be used for moving on its own, not in between mining. x,y is relative to turtle
-function move(x,y)
+function movey(y)
  
  if y > 0 then
   turtle.turnRight()
@@ -76,7 +89,10 @@ function move(x,y)
   end
   turtle.turnRight()
  end
- 
+end
+
+function movex(x)
+
  if x > 0 then
   for i=1,x do
    turtle.forward()
