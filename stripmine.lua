@@ -34,7 +34,6 @@ fuel()
 function main()
   checkInv()
   dig()
-  move()
 end
 
 -- check and deal with full inventory
@@ -54,22 +53,13 @@ end
 
 
 function deposit()
- -- deposit function for move to start chest, depositing items, and optionally moving back
+ invdx = dx * -1
+ invdy = dy * -1
+ move(invdx,invdy)
 end
  
 -- move maintains directionality so it is only to be used for moving on its own, not in between mining. x,y is relative to turtle
 function move(x,y)
- if x > 0 then
-  for i=1,x do
-   turtle.forward()
-   dx = dx + 1
-  end
- elseif x < 0 then
-  for i=x,-1 do
-   turtle.back()
-   dx = dx - 1
-  end
- end
  
  if y > 0 then
   turtle.turnRight()
@@ -86,8 +76,23 @@ function move(x,y)
   end
   turtle.turnRight()
  end
+ 
+ if x > 0 then
+  for i=1,x do
+   turtle.forward()
+   dx = dx + 1
+  end
+ elseif x < 0 then
+  for i=x,-1 do
+   turtle.back()
+   dx = dx - 1
+  end
+ end
 end
  
 function dig()
  
 end
+
+
+
