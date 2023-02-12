@@ -28,14 +28,6 @@ function fuel()
         turtle.refuel(1)
     end
 end
- 
--- main
-function main()
- fuel()
- checkInv()
- dig(depth, height)
- deposit()
-end
 
 -- check and deal with full inventory
 function checkInv()
@@ -120,5 +112,12 @@ function dig(d,h)
  
 end
 
+-- main
+function main()
+ fuel()
+ checkInv()
+ dig(depth, height)
+ deposit()
+end
 
-
+main()
