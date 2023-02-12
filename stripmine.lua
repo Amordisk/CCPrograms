@@ -102,8 +102,10 @@ end
 function dig(d,h)
  --if h == 3 then   stops dig from working for some reason
   for i=1,d do
+   --vein sense here
    turtle.dig()
    movex(1)
+   --vein sense here
    turtle.digUp()
    turtle.digDown()
   end
@@ -114,6 +116,26 @@ function senseOre(block)
  return block.name:find('ore')
 end
 
+function veinSense()
+ success, data = turtle.inspect()
+ if success and senseOre(data) then
+  veinMine(front)
+ end
+ success, data = turtle.inspectUp()
+ if success and senseOre(data) then
+  veinMine(up)
+ end
+ success, data = turtle.inspectDown()
+ if success and senseOre(data) then
+  veinMine(down)
+ end
+end
+ 
+function veinMine(direction)
+ 
+ 
+end
+ 
 -- main
 function main()
  fuel()
