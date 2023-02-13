@@ -102,10 +102,8 @@ end
 function dig(d,h)
  --if h == 3 then   stops dig from working for some reason
   for i=1,d do
-   veinSense()
    turtle.dig()
    movex(1)
-   veinSense()
    turtle.digUp()
    turtle.digDown()
   end
@@ -116,24 +114,36 @@ function senseOre(block)
  return block.name:find('ore')
 end
 
-function veinSense()
- success, data = turtle.inspect()
- if success and senseOre(data) then
-  veinMine(front)
- end
- success, data = turtle.inspectUp()
- if success and senseOre(data) then
-  veinMine(up)
- end
- success, data = turtle.inspectDown()
- if success and senseOre(data) then
-  veinMine(down)
- end
-end
- 
-function veinMine(direction)
- 
- 
+function veinMine()
+     for _, direction in ipairs({'up', 'down', 'other'}) do
+        if direction == 'up' then
+            local success, data = turtle.inspectUp()
+            if success and isTreasure(data) then
+                turtle.digUp()
+                turtle.up()
+                mineVein()
+                turtle.down()
+            end
+        elseif direction == 'down' then
+            local success, data = turtle.inspectDown()
+            if success and isTreasure(data) then
+                turtle.digDown()
+                turtle.down()
+                mineVein()
+                turtle.up()
+            end
+        else
+            for i=1, 4 do
+                local success, data = turtle.inspect()
+                if success and isTreasure(data) then
+                    turtle.dig()
+                    turtle.forward()
+                    mineVein()
+                    turtle.back()
+                end
+            end
+        end
+    end
 end
  
 -- main
