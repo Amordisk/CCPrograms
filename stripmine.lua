@@ -123,7 +123,7 @@ function veinMine()
             if success and senseOre(data) then
                 turtle.digUp()
                 turtle.up()
-                mineVein()
+                veinMine()
                 turtle.down()
             end
         elseif direction == 'down' then
@@ -131,7 +131,7 @@ function veinMine()
             if success and senseOre(data) then
                 turtle.digDown()
                 turtle.down()
-                mineVein()
+                veinMine()
                 turtle.up()
             end
         else
@@ -140,7 +140,7 @@ function veinMine()
                 if success and senseOre(data) then
                     turtle.dig()
                     turtle.forward()
-                    mineVein()
+                    veinMine()
                     turtle.back()
                 end
             end
