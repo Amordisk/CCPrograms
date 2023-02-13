@@ -114,7 +114,7 @@ function dig(d,h,b)
     turtle.turnRight()
     turtle.turnRight()
     branch()
-    turtle.turnLeft
+    turtle.turnLeft()
    end
   end
  --end
