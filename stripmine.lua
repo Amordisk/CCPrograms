@@ -3,7 +3,7 @@ height = 0
 depth = 0
 dx = 0
 dy = 0
-width = 0
+width = 1
 branchSpace = 0
 directionality = 1 -- 1 = up/true to axis, 2 = right, 0 = left, 3 = backwards
  
@@ -14,11 +14,11 @@ height = read()
 print("depth")
 depth = read()
  
-print("width")
-width = read()
- 
 print("branch spacing")
 branchSpace = read()
+
+print("branch length")
+branchLength = read()
  
 -- fuel
 function fuel()
@@ -99,16 +99,23 @@ function movex(x)
  end
 end
  
-function dig(d,h)
+function dig(d,h,b)
  --if h == 3 then   stops dig from working for some reason
   for i=1,d do
-   veinMine()
    turtle.dig()
    movex(1)
    fuel()
    veinMine()
    turtle.digUp()
    turtle.digDown()
+   if i % branchSpace == 0 and b == 1 then
+    turtle.turnLeft()
+    branch()
+    turtle.turnRight()
+    turtle.turnRight()
+    branch()
+    turtle.turnLeft
+   end
   end
  --end
 end
@@ -152,11 +159,18 @@ function veinMine()
     end
 end
  
+function branch()
+ dig(branchLength,height,0)
+ for i=1,branchLength do
+  turtle.back()
+ end
+end
+
 -- main
 function main()
  fuel()
  checkInv()
- dig(depth, height)
+ dig(depth, height, 1)
  deposit()
 end
 
