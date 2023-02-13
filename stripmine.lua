@@ -140,7 +140,10 @@ function veinMine()
                 if success and senseOre(data) then
                     turtle.dig()
                     turtle.forward()
-                    veinMine()
+                    for i=1,4 do
+                      turtle.turnLeft()
+                      veinMine()
+                    end
                     turtle.back()
                 end
             end
