@@ -120,7 +120,7 @@ function veinMine()
      for _, direction in ipairs({'up', 'down', 'other'}) do
         if direction == 'up' then
             local success, data = turtle.inspectUp()
-            if success and isTreasure(data) then
+            if success and senseOre(data) then
                 turtle.digUp()
                 turtle.up()
                 mineVein()
@@ -128,7 +128,7 @@ function veinMine()
             end
         elseif direction == 'down' then
             local success, data = turtle.inspectDown()
-            if success and isTreasure(data) then
+            if success and senseOre(data) then
                 turtle.digDown()
                 turtle.down()
                 mineVein()
@@ -137,7 +137,7 @@ function veinMine()
         else
             for i=1, 4 do
                 local success, data = turtle.inspect()
-                if success and isTreasure(data) then
+                if success and senseOre(data) then
                     turtle.dig()
                     turtle.forward()
                     mineVein()
