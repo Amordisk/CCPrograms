@@ -1,5 +1,5 @@
 stripmine
 1. fix the height selector
-2. add branch mining
-3. add vein mining using tables and including the inverse of the turtles movement for backwards traversing
+2. [DONE] add branch mining
+3. [DONE] add vein mining using tables and including the inverse of the turtles movement for backwards traversing
   addon: best way to detect ores might be to search the returned string for the word "Ore"
