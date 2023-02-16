@@ -108,7 +108,7 @@ function dig(d,h,b)
    veinMine()
    turtle.digUp()
    turtle.digDown()
-   if i % branchSpace + 1 == 0 and b == 1 then
+   if i % (branchSpace + 1) == 0 and b == 1 then
     turtle.turnLeft()
     branch()
     turtle.turnRight()
